@@ -1,0 +1,114 @@
+<!DOCTUPE HTML>
+<html lang="ru">
+    <head>
+		<meta charset="8-UTF"/>
+		<meta name="viewport" content="width=device-width", user-scalable="no">	
+	    <title>Тетрис онлайн</title>
+		<script src="app/jquery.js"></script>		
+		<link href="app/style.css" rel="stylesheet" type="text/css" />		  
+    </head>
+    <body>
+		<div id="main">
+		</div>
+		<div class="menu_li" id="menu">
+			<div id="tetris">
+				<font color="red">Т</font><font color="#804d00">е</font><font color="#008000">т</font><font color="#e60099">р</font><font color="#e6e600">и</font><font color="#990099">с</font>
+			</div>
+			<li id="li1">Играть</li>
+			<li>Рекорды</li>
+			<li>Инструкции</li>
+			<li>Настройки</li>
+			<li>Справка</li>
+		</div>
+		<div id="pause">
+			<svg width="31" height="31">
+				<circle cx="17" cy="17" r="14" fill="black"  />
+				<line
+					x1="13"	y1="11"
+					x2="13"	y2="23"
+					style="stroke: white;	stroke-linecap: round;	stroke-width:5"
+				/>
+				<line
+					x1="21"	y1="11"
+					x2="21"	y2="23"
+					style="stroke: white;	stroke-linecap: round;	stroke-width:5"
+				/>
+			</svg>
+		</div>
+		<div class="menu_li" id="after_pause">
+			<li id="li2">Продолжить</li>
+			<li>Меню</li>
+		</div>
+		<div class="menu_li" id="settings">
+		    <font>&#8592; н а з а д<hr color="#800000" /></font>
+			Режим<br/>
+			<input id="setti1" name="setti" type="radio" checked /><label for="setti1">Лёгкий </label>
+			<input id="setti2" name="setti" type="radio" /><label for="setti2">Средний</label>
+			<input id="setti3" name="setti" type="radio" /><label for="setti3">Сложный </label>
+			<br/>
+			<br/>
+			Фон<br/>
+			<div class="but"><</div>
+			<div class="but t">></div>
+			<img src="app/images/image0.jpg" /><br/><br/>
+			Допольнительные поля<br/>
+			<div id="minus" >-</div>
+			<div id="plus" >+</div>
+			<div id="zna">1</div>
+		</div>
+        <div class="menu_li" id="instructions">
+		    <font>&#8592; н а з а д<hr color="#800000" /></font>
+		    тут будет подробно описано всё по поводу прохождения игры
+		</div>
+		<div class="menu_li" id="reference">
+		    <font>&#8592; н а з а д<hr color="#800000" /></font>
+		    <div id="er">
+		        -Этот сайт разработан с целью развлечения и только.<br/>
+		        -Этот сайт является итнелектуальной собственностью конкретного <a href="https://vk.com/id331648923">физического лица</a>, полностью разработавшее данный продукт.
+		    </div>    
+        </div>
+		<div id="ochki">
+		    Очки:
+		    <div>0
+		    </div>
+		</div>
+        <div id="hint">
+        </div>
+        <div id="next_f">
+            Далее:
+        </div>
+        <div class="menu_li" id="record">
+		    <font>&#8592; н а з а д<hr color="#800000" /></font>
+		    <table>
+		        <tr>
+		            <td>Место</td>
+		            <td>Ник</td>
+		            <td>Очки</td>
+		            <td>Дата</td>
+		        </tr>
+		        <?php
+			        $file = file_get_contents('winners.txt', true);
+		            $winners = explode(" ", $file);
+		            for($i=0;$i<5;$i++){
+		                echo "<tr><td>".($i+1)."</td>";
+		                for($j=0;$j<3;$j++){
+		                    echo "<td>".$winners[$i*4+$j]."</td>";
+		                }
+		                echo "</tr>";
+		            }
+		            fclose($file); 
+		        ?>
+		    </table>
+        </div>
+        <div class="menu_li" id="ifwin">
+            <div id="mesto"></div>
+            <div id="mesto2">Придумай себе крутой ник<font>(Ник должен содержать не более 10 символов)</font>, безопасный пароль и добро пожаловать в число победителей;)</div>
+            <div id="forma">
+                <input class="inp" type="text" placeholder="Ник"></input>
+                <input class="inp" type="password" placeholder="Пароль"></input><br>
+                <input id="subm" type="submit" value="Отправить"></input>
+            </div>
+        </div>
+		<script src="app/demo.js" type="text/javascript"></script> 
+    </body>
+</html>
